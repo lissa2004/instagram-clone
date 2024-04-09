@@ -12,7 +12,6 @@
 
     <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
-    <!-- Include Firebase UI authentication script -->
 
     <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="stylesheet" href="styles.css" />
@@ -22,10 +21,9 @@
 
   <body>
 
-    <div id="firebase-auth-container">
-
-    </div>
-    <div class="main-container">
+    <section id="firebase-auth-container">
+    </section>
+    <section id="main-container">
       <div class="navbar">
         <div class="navbar-inner">
           <div class="logo">
@@ -119,14 +117,14 @@
                   src="assets/akhil.png"
                 />
               </div>
-              <div class="logout-createpost">
+              <div class="upload-logout margin-right">
                 <div>
                   <button
                     id="show-create-modal"
                     type="button"
                     class="btn btn-sm btn-primary margin-left height-20px"
                   >
-                    Create Post
+                    Upload
                   </button>
                 </div>
                 <div>
@@ -283,6 +281,7 @@
                     >
                       <svg
                         aria-label="More options"
+                        id="more"
                         class="_8-yf5"
                         fill="#262626"
                         height="16"
@@ -436,6 +435,7 @@
                     >
                       <svg
                         aria-label="More options"
+                        id="more"
                         class="_8-yf5"
                         fill="#262626"
                         height="16"
@@ -589,6 +589,7 @@
                     >
                       <svg
                         aria-label="More options"
+                        id="more"
                         class="_8-yf5"
                         fill="#262626"
                         height="16"
@@ -742,6 +743,7 @@
                     >
                       <svg
                         aria-label="More options"
+                        id="more"
                         class="_8-yf5"
                         fill="#262626"
                         height="16"
@@ -895,6 +897,7 @@
                     >
                       <svg
                         aria-label="More options"
+                        id="more"
                         class="_8-yf5"
                         fill="#262626"
                         height="16"
@@ -1144,26 +1147,26 @@
             <div class="modal-body">
               <form>
                 <div class="mb-3">
-                  <label for="username-input" class="col-form-label"
+                  <label for="username" class="col-form-label"
                     >User Name</label
                   >
-                  <input type="text" class="form-control" id="username-input" />
+                  <input type="text" class="form-control" id="username" />
                 </div>
                 <div class="mb-3">
-                  <label for="image-link-input" class="col-form-label"
+                  <label for="imagelink" class="col-form-label"
                     >Image Link</label
                   >
                   <input
                     type="text"
                     class="form-control"
-                    id="image-link-input"
+                    id="imagelink"
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="caption-input" class="col-form-label"
+                  <label for="caption" class="col-form-label"
                     >Caption</label
                   >
-                  <textarea class="form-control" id="caption-input"></textarea>
+                  <textarea class="form-control" id="caption"></textarea>
                 </div>
               </form>
             </div>
@@ -1193,27 +1196,51 @@
           </div>
         </div>
       </div>
-    </div>
+      <div class="modal fade"
+      id="example"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-body">
+        <h2 class="fs-5">Edit</h2>
+        <button
+              type="button"
+              class="edit-btn"
+              data-bs-dismiss="modal"
+              aria-label="edit-btn"
+        >Edit</button>
+    <hr>
+        <h2 class="fs-5"></h2>
+        <button
+        id="delete-btn"
+        type="button"
+        class="btn btn-primary"
+      >
+        Delete
+        </button>
+    <hr>
+      <h2 class="fs-5"></h2>
+      <button
+      id="unfollow-btn"
+      type="button"
+      class="btn btn-primary margin-left"
+    >
+      Unfollow
+      </button>
+       </div>
+      </div>
+</section>
 
-    <script
-      src="https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js"
-      type="module"
-    ></script>
-    <script
-      src="https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js"
-      type="module"
-    ></script>
-    <script
-      src="https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js"
-      type="module"
-    ></script>
-    <script
-    src="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.js"
-    type="module"
-  ></script>
+    <script src='https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js' type="module"></script>
+    <script src='https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js' type="module"></script>
+    <script src='https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js' type="module"></script>
+    <script src='https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js' type="module"></script>
  
-
     <script type="module">
+      import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js';
+      import { getAuth } from 'https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js'; 
+
       // Initialize Firebase
       const firebaseConfig = {
         apiKey: "AIzaSyB147LmmILS2ACXZlq_IINWy_30hB-Qm3U",
@@ -1221,22 +1248,13 @@
         projectId: "instagram-clone-dca3b",
         storageBucket: "instagram-clone-dca3b.appspot.com",
         messagingSenderId: "352874895921",
-        appId: "1:352874895921:web:40b495278ca4950dde9310",
+        appId: "1:352874895921:web:40b495278ca4950dde9310"
       };
 
       // Initialize Firebase app
       firebase.initializeApp(firebaseConfig);
-      const auth = firebase.auth()
-       
-      if (auth) {
-        console.log("Firebase Auth initialized:", auth);
-      
-      } else {
-        console.error("Firebase auth is not initialized.");
-      }
+  </script>
 
-      const db = firebase.firestore();
-      console.log("Firestore instance:", db);
 
     </script>
     
@@ -1251,5 +1269,6 @@
     crossorigin="anonymous"
    ></script>
    <script src="app.js" defer></script>
+   <script src="auth.js" defer></script>
   </body>
 </html>

@@ -1,19 +1,18 @@
-const firebaseAuthContainer = document.querySelector("#firebase-auth-container");
-const mainContainer = document.querySelector(".main-container");
 const searchInput = document.querySelector("#search-input");
 const searchBtn = document.querySelector("#search-btn");
 const postsDiv = document.querySelector(".posts");
-const usernameInput = document.querySelector("#username-input");
-const imageLinkInput = document.querySelector("#image-link-input");
-const captionInput = document.querySelector("#caption-input");
+const usernameInput = document.querySelector("#username");
+const imageLinkInput = document.querySelector("#imagelink");
+const captionInput = document.querySelector("#caption");
 const createPostBtn = document.querySelector("#create-post-btn");
 const editPostBtn = document.querySelector("#edit-post-btn");
-const logoutBtn = document.querySelector("#logout-btn");
 editPostBtn.style.display = "none";
 const editBtn = document.querySelector("#edit-btn");
+const deletebtn = document.querySelector("#delete-btn");
+const unfollowBtn = document.querySelector("#unfollow-btn");
 const showCreateModal = document.querySelector("#show-create-modal");
+const moreBtn = document.querySelector("#more")
 
-// const ui = new firebaseui.auth.AuthUI(auth);
 
 // Get the modal element
 const modalElement = document.getElementById('exampleModal');
@@ -38,67 +37,29 @@ showCreateModal.addEventListener("click", () => {
 isEditMode = false;
 createPostBtn.style.display = "block";
 editPostBtn.style.display = "none";
-usernameInput.value = "";
-imageLinkInput.value = "";
-captionInput.value = "";
 modal.show();
 });
 
 editPostBtn.addEventListener("click", () => {
-console.log("edit post btn clicked");
 updatePost(postToEditId, imageLinkInput.value, captionInput.value);
 modal.hide();
 });
-logoutBtn.addEventListener("click", () => {
-handleLogout();
-});
 
-
-const redirectToAuth = () => {
-  mainContainer.style.display = "none";
-  firebaseAuthContainer.style.display = "block";
-
-  ui.start("#firebase-auth-container", {
-    callbacks: {
-      signInSuccessWithAuthResult: (authResult, redirectUrl) => {
-        // User successfully signed in.
-        // Return type determines whether we continue the redirect automatically
-        // or whether we leave that to developer to handle.
-        console.log("authResult", authResult.user.uid);
-        // this.userId = authResult.user.uid;
-        // this.$authUserText.innerHTML = user.displayName;
-        redirectToApp();
-      },
-    },
-    signInOptions: [
-      firebaseui.auth.EmailAuthProvider.PROVIDER_ID,
-      firebaseui.auth.GoogleAuthProvider.PROVIDER_ID,
-    ],
-    // Other config options...
+moreBtn.addEventListener("click", () => {
+  isEditMode = true;
+  createPostBtn.style.display = "none";
+  editPostBtn.style.display = "block";
+  usernameInput.value = "";
+  imageLinkInput.value = "";
+  captionInput.value = "";
+  modal.show();
+  console.log("btn clicked");
   });
-};
-
-const redirectToApp = () => {
-  mainContainer.style.display = "block";
-  firebaseAuthContainer.style.display = "none";
-};
-
-const handleLogout = () => {
-  auth
-    .signOut()
-    .then(() => {
-      console.log("USER SIGNED OUT");
-      redirectToAuth();
-    })
-    .catch((error) => {
-      console.log("ERROR OCCURRED", error);
-    });
-};
-
 
 var feed = [];
 var isEditMode = false;
 var postToEditId = null;
+
 
 const uploadPostToFirebase = (post) => {
 db.collection("posts")
@@ -111,17 +72,20 @@ db.collection("posts")
     console.log("ERROR", error);
   });
 };
+const db = firestore();
+console.log(db)
 
 const getPostsFromFirebase = () => {
-db.collection("posts")
-  .get()
-  .then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      console.log(doc.data());
-      feed.push(doc.data());
-      outputFeed();
+  db.collection("posts")
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        console.log(doc.data());
+      });
+    })
+    .catch((error) => {
+      console.error("Error getting posts:", error);
     });
-  });
 };
 
 
