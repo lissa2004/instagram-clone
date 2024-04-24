@@ -14,14 +14,13 @@ const showCreateModal = document.querySelector("#show-create-modal");
 const moreBtn = document.querySelector("#more")
 
 
-// Get the modal element
 const modalElement = document.getElementById('exampleModal');
 const modal = new bootstrap.Modal(modalElement, {
 backdrop: 'static', 
 keyboard: false
 });
 
-// Event Listeners
+
 searchBtn.addEventListener("click", () => {
 console.log(searchInput.value);
 searchInput.style.background = "red";
@@ -72,8 +71,6 @@ db.collection("posts")
     console.log("ERROR", error);
   });
 };
-const db = firestore();
-console.log(db)
 
 const getPostsFromFirebase = () => {
   db.collection("posts")
@@ -182,4 +179,3 @@ modal.show();
 
 outputFeed();
 getPostsFromFirebase();
-outputFeed(feed);

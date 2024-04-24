@@ -1232,16 +1232,14 @@
       </div>
 </section>
 
-    <script src='https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js' type="module"></script>
-    <script src='https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js' type="module"></script>
-    <script src='https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js' type="module"></script>
-    <script src='https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js' type="module"></script>
- 
-    <script type="module">
-      import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js';
-      import { getAuth } from 'https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js'; 
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
 
-      // Initialize Firebase
+
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+
+    <script>
+        
       const firebaseConfig = {
         apiKey: "AIzaSyB147LmmILS2ACXZlq_IINWy_30hB-Qm3U",
         authDomain: "instagram-clone-dca3b.firebaseapp.com",
@@ -1253,6 +1251,10 @@
 
       // Initialize Firebase app
       firebase.initializeApp(firebaseConfig);
+
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        console.log(db)
   </script>
 
 
