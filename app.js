@@ -11,14 +11,11 @@ const editBtn = document.querySelector("#edit-btn");
 const deletebtn = document.querySelector("#delete-btn");
 const unfollowBtn = document.querySelector("#unfollow-btn");
 const showCreateModal = document.querySelector("#show-create-modal");
-const moreBtn = document.querySelector("#more")
+const moreBtn = document.querySelector("#more");
 
 
 const modalElement = document.getElementById('exampleModal');
-const modal = new bootstrap.Modal(modalElement, {
-backdrop: 'static', 
-keyboard: false
-});
+const modal = new bootstrap.Modal(modalElement);
 
 
 searchBtn.addEventListener("click", () => {
@@ -45,12 +42,6 @@ modal.hide();
 });
 
 moreBtn.addEventListener("click", () => {
-  isEditMode = true;
-  createPostBtn.style.display = "none";
-  editPostBtn.style.display = "block";
-  usernameInput.value = "";
-  imageLinkInput.value = "";
-  captionInput.value = "";
   modal.show();
   console.log("btn clicked");
   });
@@ -61,6 +52,7 @@ var postToEditId = null;
 
 
 const uploadPostToFirebase = (post) => {
+
 db.collection("posts")
   .doc(post.id + "")
   .set(post)
@@ -111,7 +103,7 @@ const outputFeed = () => {
 
 const updatedFeed = feed.map((post) => {
   return `
-  <div class="post">
+  <div class="posts">
     <div class="post-header">
         <p>${post.username}</p>
         <button class="btn btn-sm btn-primary" onclick="showEditPostModal(${post.id})">Edit</button>
