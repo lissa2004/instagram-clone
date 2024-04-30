@@ -21,18 +21,18 @@ const ui = new firebaseui.auth.AuthUI(auth);
     firebaseAuthContainer.style.display = "block";
 
   ui.start("#firebase-auth-container", {
-    // callbacks: {
-    //   signInSuccessWithAuthResult: (authResult, redirectUrl) => {
-    //     // User successfully signed in.
-    //     // Return type determines whether we continue the redirect automatically
-    //     // or whether we leave that to developer to handle.
-    //     console.log("authResult", authResult.user.uid);
-    //     redirectToApp();
-    //   },
-    // },
+    callbacks: {
+      signInSuccessWithAuthResult: (authResult, redirectUrl) => {
+        // User successfully signed in.
+        // Return type determines whether we continue the redirect automatically
+        // or whether we leave that to developer to handle.
+        console.log("authResult", authResult.user.uid);
+        redirectToApp();
+      },
+    },
     signInOptions: [
       firebase.auth.EmailAuthProvider.PROVIDER_ID,
-      // firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     ],
     // Other config options...
   });
