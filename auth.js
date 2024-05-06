@@ -1,7 +1,7 @@
 const mainContainer = document.querySelector("#main-container");
 const firebaseAuthContainer = document.querySelector("#firebase-auth-container");
 const logoutBtn = document.querySelector("#logout-btn"); 
-
+const authUserText = document.querySelector(".auth-user");
 
 const ui = new firebaseui.auth.AuthUI(auth);
 
@@ -9,6 +9,7 @@ const ui = new firebaseui.auth.AuthUI(auth);
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         console.log(user);
+        authUserText.innerHTML = user.displayName;
         redirectToApp(); 
     } else {
         console.log("No user is logged in");

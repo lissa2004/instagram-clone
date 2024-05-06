@@ -12,10 +12,9 @@ const deletebtn = document.querySelector("#delete-btn");
 const unfollowBtn = document.querySelector("#unfollow-btn");
 const showCreateModal = document.querySelector("#show-create-modal");
 const moreBtn = document.querySelector("#more");
-
-
 const modalElement = document.getElementById('exampleModal');
 const modal = new bootstrap.Modal(modalElement);
+
 
 
 searchBtn.addEventListener("click", () => {
