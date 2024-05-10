@@ -14,114 +14,120 @@
     padding: 0;
 }
 
-.navbar {
-    height: 54px;
-    border-bottom: 1px solid var(--color-border);
+.sidebar {
+    width: 18vw;
+    height: 100vh;
+    position: fixed;
+    top:0;
+    background-color: #fafafa;
+    border-right: 1px solid lightgrey;
     display: flex;
+    overflow: hidden;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
 }
 
-.navbar-inner {
-    width: 100%;
+.sidebar-content{
     height: 100%;
     display: flex;
-    padding: 0px 20px 0px 20px; 
-    align-items: center;
+    flex-direction: column;
     justify-content: space-between;
+    overflow: hidden;
 }
+
 
 .logo {
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-bottom: 30px;
     width: 360px;
 }
 
-.search-bar {
-    width: 460px;
-    height: 28px;
-    margin-right: 90px;
+
+.category{
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    border:1px solid var(--color-border);
-    background-color: #ffff;
-}
-
-.search-input{
-    border: none;
-}
-
-
-
-.search-icon {
-    display: inline-block;
-    background-image: url(https://www.instagram.com/static/bundles/es6/sprite_core_2x_bcd90c1d4868.png/bcd90c1d4868.png);
-    background-repeat: no-repeat;
-    background-size: 440px 411px;
-    background-position: -428px -241px;
-    height: 10px;
-    width: 30px;
-    margin-right: 6px;
-    border: none;
-    background-color: #ffff;
-}
-
-
-.navbar-icons {
-    width: 360px;
-    height: 22px;
-}
-
-.profile-pic img {
-    height: 22px;
-    width: 22px;
-    border-radius: 50%;
-}
-
-.navbar-icons-inner {
-    padding: 0 0 0 10px;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.margin-left {
-    margin-left: 22px;
-}
-.margin-left-small {
-    margin-left: 14px;
-}
-
-
-.upload-logout{
+    font-size: 16px;
+    margin-bottom: 12px;
+    font-weight: 500;
     display: flex;
     align-items: center;
-    justify-content:center;
-    height: 31px;
-}
-
-.profile-actions{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 27px;
-}
-.auth-user{
-    margin-left: 8px;
+    width: 65%;
+    height: 45px;
     cursor: pointer;
+}
+.category:hover{
+    background:lightgrey;
+    border-radius: 5px;
+} 
+.material-symbols-outlined{
+    margin-right: 20px;
+    font-size: 27px;
+}
+.sidebar-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        margin-top: auto;
+}
+.nav-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 15px;
+    padding: 0;
+}
+.profile-container {
+    display: flex;
+    align-items: center;
+    background: none;
+    width: 270px;
+    height: 45px;
+    margin: 30px;
+
+}
+.profile-container img{
+    display: flex;
+    width: 29px;
+    height: 29px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin: 10px 10px 10px 20px;
+    font-size: 35px; 
+}
+
+.profile img{
+    width: 39px;
+    height: 39px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px; 
+    font-size: 40px;
+}
+
+.category img{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%; 
+    background-color: #fafafa;
+    margin-right: 15px; 
 }
 
 main {
-    height: calc(100vh - 54px);
     background-color: #fafafa;
     display: flex;
     justify-content: center;
 }
 
 .content-container {
-   padding-top: 30px;
-   width: 935px;
-   height: 100%;
-   display: flex;
-   overflow: hidden;
+    padding-top: 30px;
+    width: 935px;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    margin-left: 70px;
 }
 
 .content {
@@ -131,7 +137,7 @@ main {
     overflow-y: scroll;
  }
 
-.sidebar {
+.sidebar-left {
     width: 293px;
     height: 100%;
 }
@@ -302,11 +308,11 @@ main {
     margin-left: 20px;
 }
 
-.username {
+.user-details-top{
     font-size: 14px;
     font-weight: 600;
 }
-.name {
+.user-details-bottom{
     font-size: 12px;
     font-weight: 400;
 }
@@ -361,3 +367,90 @@ main {
 .body img {
     width: 100%;
 }
+
+
+.profile{
+    display: flex;
+    margin: 0 28px 0 0;
+    width: 614px;
+    height: 100%;
+    overflow-y: scroll;
+    border-bottom: 1px solid lightgrey ;
+}
+
+.profile-info{
+    width: 614px;
+    background-color: #fafafa;
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+   
+    
+}
+
+.profile-pic img{
+   height: 5%;
+   width: 160px;
+   border-radius: 50%;
+   background-color: #fafafa;
+   padding: 0px;
+   margin-left: 20px;
+}
+
+.top-items, .bottom-items, .middle-items{
+display: flex;
+align-items: center;
+justify-content:space-between;
+margin-bottom: 13px;
+font-size: 17px;
+}
+.bottom-items span{
+    font-weight: 500;
+
+}
+.profile-contants{
+    width: 350px;
+    margin-left: 40px;
+}
+
+.list-group-item{
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+   justify-content: center;
+}
+.edit-modal-container .list-group {
+    background-color: #fefefe;
+    margin: 15% auto;
+    border: 1px solid #888;
+    width: 75%;
+    height: 30%;
+    max-width: 400px;
+    text-align: center;
+  }
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 48px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+.edit-modal-container {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+  };
+
+  
