@@ -10,16 +10,14 @@ firebase.auth().onAuthStateChanged((user) => {
 
       console.log("User authenticated:", user);
 
-      // Update user information elements
+     
       const authUserElements = document.querySelectorAll(".userInfo");
       authUserElements.forEach(element => {
           element.innerHTML = displayName;
       });
 
-      // Redirect to the application
+      
       redirectToApp(); 
-
-      // Retrieve and display posts
       getPostsFromFirebase(userId, displayName);
   } else {
       console.log("No user is logged in");
@@ -41,9 +39,9 @@ const getPostsFromFirebase = (userId, displayName) => {
                   id: doc.id,
                   ...postData,
                   createdAt: postData.createdAt.toDate().toLocaleString(),
-                  displayName: postData.displayName || "", // Use display name from post data
+                  displayName: postData.displayName || "",
                   userAvatar: postData.userAvatar || "",
-                  userId: postData.userId // Ensure userId is included
+                  userId: postData.userId 
               });
           });
           console.log("Fetched posts:", feed);
