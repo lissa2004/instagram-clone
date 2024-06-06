@@ -25,6 +25,11 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="mobile-styles.css" />
     <title>Instagram</title>
+    <style>
+      #edit-btn, #delete-btn {
+          color: red;
+      }
+  </style>
   </head>
 
   <body>
@@ -90,51 +95,6 @@
       <main>
         <div class="content-container">
         <div class="content">
-        <div class="profile-page">
-          <div class="profile">
-            <div class="profile-info">
-              <div class="profile-pic">
-                <img
-                  src="https://th.bing.com/th/id/OIP.FLbq0-zAnqPesyc-Ax2DRAAAAA?rs=1&pid=ImgDetMain"
-                />
-              </div>
-              <div class="profile-contants">
-                <div class="top-items">
-                  <span class="auth-user"></span>
-                  <button
-                    id="show-create-modal"
-                    type="button"
-                    class="btn btn-sm btn-primary margin-left height-20px"
-                  >
-                    Edit Profile
-                  </button>
-                  <button
-                    id="show-create-modal"
-                    type="button"
-                    class="btn btn-sm btn-primary margin-left height-20px"
-                  >
-                    View Archive
-                  </button>
-                </div>
-                <div class="middle-items">
-                  <span class="auth-posts">567 Posts</span>
-                  <span class="auth-followes">12.5 M Followers</span>
-                  <span class="auth-follwing">456 Following</span>
-                </div>
-                <div class="bottom-items">
-                  <span class="auth-user"></span>
-                  <button
-                    id="logout-btn"
-                    type="button"
-                    class="btn btn-sm btn-danger margin-left"
-                  >
-                    Logout
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
         <div class="home-page-contents">
           <div class="stories">
               <div class="stories-inner">
@@ -251,6 +211,53 @@
                 </div>
               </div>
           </div>
+          <div  class="posts">
+          </div>
+        </div>
+        <div class="profile-page">
+          <div class="profile">
+            <div class="profile-info">
+              <div class="profile-pic">
+                <img
+                  src="https://th.bing.com/th/id/OIP.FLbq0-zAnqPesyc-Ax2DRAAAAA?rs=1&pid=ImgDetMain"
+                />
+              </div>
+              <div class="profile-contants">
+                <div class="top-items">
+                  <span class="userInfo"></span>
+                  <button
+                    id="show-create-modal"
+                    type="button"
+                    class="btn btn-sm btn-primary margin-left height-20px"
+                  >
+                    Edit Profile
+                  </button>
+                  <button
+                    id="show-create-modal"
+                    type="button"
+                    class="btn btn-sm btn-primary margin-left height-20px"
+                  >
+                    View Archive
+                  </button>
+                </div>
+                <div class="middle-items">
+                  <span class="auth-posts">567 Posts</span>
+                  <span class="auth-followes">12.5 M Followers</span>
+                  <span class="auth-follwing">456 Following</span>
+                </div>
+                <div class="bottom-items">
+                  <span class="userInfo"></span>
+                  <button
+                    id="logout-btn"
+                    type="button"
+                    class="btn btn-sm btn-danger margin-left"
+                  >
+                    Logout
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="posts">
           </div>
         </div>
@@ -268,10 +275,10 @@
               </div>
               <div class="user-details">
                 <div class="user-details-top">
-                  <span class="auth-user"></span>
+                  <span class="userInfo"></span>
                 </div>
                 <div class="user-details-bottom">
-                  <span class="auth-user"></span> 
+                  <span class="userInfo"></span> 
                 </div>
               </div>
             </div>
