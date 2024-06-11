@@ -15,12 +15,12 @@ firebase.auth().onAuthStateChanged((user) => {
 
       console.log(`User authenticated: ${userId} ${displayName}`);
       console.log("Calling getPostsFromFirebase with userId:", userId, "and displayName:", displayName);
-      getPostsFromFirebase(userId, displayName); // Pass userId and displayName to getPostsFromFirebase
+      getPostsFromFirebase(userId, displayName);
       
-      redirectToApp(); // Show the main container and hide the auth container
+      redirectToApp(); 
   } else {
       console.log("User is not authenticated");
-      redirectToAuth(); // Show the auth container and hide the main container
+      redirectToAuth(); 
   }
 });
 
@@ -59,7 +59,7 @@ const redirectToAuth = () => {
     callbacks: {
       signInSuccessWithAuthResult: (authResult, redirectUrl) => {
         console.log("authResult", authResult.user.uid);
-        return false; // Prevents automatic redirection
+        return false; 
       },
     },
     signInOptions: [
@@ -78,7 +78,7 @@ const handleLogout = () => {
   firebase.auth().signOut()
     .then(() => {
       console.log("User signed out");
-      redirectToAuth(); // Redirect to auth after logout
+      redirectToAuth(); 
     })
     .catch((error) => {
       console.log("Error occurred during logout:", error);
