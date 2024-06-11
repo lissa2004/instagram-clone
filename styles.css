@@ -26,7 +26,9 @@
     flex-direction: column;
     justify-content: space-between;
 }
-
+.mobile-footer{
+    display:none;
+}
 .sidebar-content{
     height: 100%;
     display: flex;
@@ -86,6 +88,16 @@
     margin: 30px;
 
 }
+.profile-footer span{
+    margin-right: 17px;
+    font-size: 12px;
+}
+.profile-footer{
+ margin-top: 35px;
+ margin-bottom: 35px;
+ font-size: 10px;
+ font-weight: 600;
+}
 .profile-container img{
     display: flex;
     width: 29px;
@@ -129,7 +141,9 @@ main {
     overflow: hidden;
     margin-left: 70px;
 }
-
+.mobile-footer .material-symbols-outlined {
+    cursor: pointer;
+}
 .content {
     margin: 0 28px 0 0;
     width: 614px;

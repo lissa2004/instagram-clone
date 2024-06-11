@@ -1,34 +1,33 @@
 const mainContainer = document.querySelector("#main-container");
 const firebaseAuthContainer = document.querySelector("#firebase-auth-container");
-const logoutBtn = document.querySelector("#logout-btn"); 
-const ui = new firebaseui.auth.AuthUI(auth);
+const logoutBtn = document.querySelector("#logout-btn");
+const ui = new firebaseui.auth.AuthUI(firebase.auth());
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
       const userId = user.uid;
-      const displayName = user.displayName;
+      const displayName = user.displayName || "Anonymous";
 
-      console.log("User authenticated:", user);
-
-     
       const authUserElements = document.querySelectorAll(".userInfo");
       authUserElements.forEach(element => {
           element.innerHTML = displayName;
       });
 
+      console.log(`User authenticated: ${userId} ${displayName}`);
+      console.log("Calling getPostsFromFirebase with userId:", userId, "and displayName:", displayName);
+      getPostsFromFirebase(userId, displayName); // Pass userId and displayName to getPostsFromFirebase
       
-      redirectToApp(); 
-      getPostsFromFirebase(userId, displayName);
+      redirectToApp(); // Show the main container and hide the auth container
   } else {
-      console.log("No user is logged in");
-      redirectToAuth();
+      console.log("User is not authenticated");
+      redirectToAuth(); // Show the auth container and hide the main container
   }
 });
 
 const getPostsFromFirebase = (userId, displayName) => {
+  const db = firebase.firestore();
   console.log("Fetching posts for user:", userId, displayName);
 
-  const db = firebase.firestore();
   db.collection("posts")
       .get()
       .then(querySnapshot => {
@@ -39,51 +38,52 @@ const getPostsFromFirebase = (userId, displayName) => {
                   id: doc.id,
                   ...postData,
                   createdAt: postData.createdAt.toDate().toLocaleString(),
-                  displayName: postData.displayName || "",
+                  displayName: postData.displayName || "Anonymous",
                   userAvatar: postData.userAvatar || "",
-                  userId: postData.userId 
+                  userId: postData.userId
               });
           });
           console.log("Fetched posts:", feed);
           outputFeed(feed, userId, displayName);
       })
-      .catch(error => console.error("Error getting posts:", error));
+      .catch(error => {
+          console.error("Error getting posts:", error);
+      });
 };
 
-
-  const redirectToAuth = () => {
-    mainContainer.style.display = "none";
-    firebaseAuthContainer.style.display = "block";
+const redirectToAuth = () => {
+  mainContainer.style.display = "none";
+  firebaseAuthContainer.style.display = "block";
 
   ui.start("#firebase-auth-container", {
     callbacks: {
       signInSuccessWithAuthResult: (authResult, redirectUrl) => {
-        // User successfully signed in.
-        // Return type determines whether we continue the redirect automatically
-        // or whether we leave that to developer to handle.
         console.log("authResult", authResult.user.uid);
-        redirectToApp();
+        return false; // Prevents automatic redirection
       },
     },
     signInOptions: [
       firebase.auth.EmailAuthProvider.PROVIDER_ID,
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     ],
-    // Other config options...
   });
- };
+};
+
 const redirectToApp = () => {
-    mainContainer.style.display = "block";
-    firebaseAuthContainer.style.display = "none";
- }
+  mainContainer.style.display = "block";
+  firebaseAuthContainer.style.display = "none";
+};
 
 const handleLogout = () => {
-    auth.signOut()
-        .then(() => {
-        console.log("User signed out");
-        })
-        .catch((error) => {
-        console.log("Error occurred during logout:", error);
-        });
+  firebase.auth().signOut()
+    .then(() => {
+      console.log("User signed out");
+      redirectToAuth(); // Redirect to auth after logout
+    })
+    .catch((error) => {
+      console.log("Error occurred during logout:", error);
+    });
 };
+
 logoutBtn.addEventListener("click", handleLogout);
+

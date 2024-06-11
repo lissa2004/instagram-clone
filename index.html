@@ -260,6 +260,24 @@
           </div>
           <div class="posts">
           </div>
+          <div class="profile-footer">
+            <span>Meta</span>
+            <span>About</span>
+            <span>Blog</span>
+            <span>Jobs</span>
+            <span>Help</span>
+            <span>API</span>
+            <span>Privacy</span>
+            <span>Terms</span>
+            <span>Locations</span>
+            <span>Instagram Lite</span>
+            <span>Threads</span>
+            <span>Contact Uploading & Non-Users</span>
+            <span>Meta Verified</span>
+            <span>English</span>
+    
+            <span>© 2024 Instagram from Meta</span>
+          </div>
         </div>
         </div>
         <div class="sidebar-left">
@@ -358,6 +376,15 @@
             </div>
             <div class="sidebar-footer"></div>
         </div>
+        <div class="mobile-footer">
+            <span id="home-page" class="material-symbols-outlined">home</span> 
+            <span class="material-symbols-outlined">search</span>
+            <span class="material-symbols-outlined">explore</span>
+            <span id="create-post" class="material-symbols-outlined">add_box</span>
+            <span class="material-symbols-outlined">send</span>
+            <span id="profile-view" class="material-symbols-outlined">person</span>
+            <span class="material-symbols-outlined">menu</span>
+        </div>
         </div>
       </main>
 
@@ -418,8 +445,10 @@
         </div>
       </div>
       </div>
+      
       <div id="exampleModal2" class="edit-modal-container">
         <span class="close">&times;</span>
+        <div class="modal-content">
         <div class="list-group d-flex justify-content-center">
           <button id="edit-btn" type="button" class="list-group-item">Edit</button>
           <button id="delete-btn" type="button" class="list-group-item">Delete</button>
@@ -432,6 +461,7 @@
           <button type="button" class="list-group-item">Cancel</button>          
         </div>
       </div>
+      </div>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
@@ -442,14 +472,14 @@
     <script>
       // Your web app's Firebase configuration
       const firebaseConfig = {
-        apiKey: "AIzaSyCzSp9ggrXg-kfXxyDPhSjWoUczgTMepi4",
-        authDomain: "instagram-app-f73b4.firebaseapp.com",
-        projectId: "instagram-app-f73b4",
-        storageBucket: "instagram-app-f73b4.appspot.com",
-        messagingSenderId: "772466663072",
-        appId: "1:772466663072:web:ef05cb09a3e9f8331833c5",
+      apiKey: "AIzaSyDe5sL0iQ7PCi-3d0RgXX1P0bhNpGuhGfA",
+      authDomain: "instagram-clone-5545b.firebaseapp.com",
+      projectId: "instagram-clone-5545b",
+      storageBucket: "instagram-clone-5545b.appspot.com",
+      messagingSenderId: "815649303629",
+      appId: "1:815649303629:web:a1a113735e02654ddbc004"
       };
-      // Initialize Firebase app
+
       firebase.initializeApp(firebaseConfig);
       const auth = firebase.auth();
       const db = firebase.firestore();
